@@ -1,4 +1,4 @@
-project: default
+project: argocdpoc
 source:
   repoURL: 'https://github.com/ganesh-poc-repo/argocdapppoc.git'
   targetRevision: HEAD
