@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guest-book
+  namespace: argocd
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: nginx-devportal
+    repoURL: https://github.com/ganesh-poc-repo/argocdpoc.git
+    targetRevision: HEAD
