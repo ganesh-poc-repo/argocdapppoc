@@ -1,11 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: guest-book
+  name: test123
   namespace: argocd
 spec:
   destination:
-    namespace: default
+    namespace: nginx-test
     server: https://kubernetes.default.svc
   project: argocdpoc
   source:
