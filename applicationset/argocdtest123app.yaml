@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: cluster-addons
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - git:
+      repoURL: https://github.com/ganesh-poc-repo/argocdapppoc.git
+      revision: HEAD
+      directories:
+      - path: applicationset/*
+  template:
+    metadata:
+      name: '{{.path.basename}}'
+    spec:
+      project: "argocdpoc"
+      source:
+        repoURL: https://github.com/ganesh-poc-repo/argocdpoc.git
+        targetRevision: HEAD
+        path: nginx-devportal
+        valueFiles:
+            - $values/values.yaml
+        values: |-
+          nameOverride: test123
+          gateway:
+            port: 443
+            name: https
+            protocol: HTTPS
+            tls:
+              enabled: true
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: test123
+      syncPolicy:
+        syncOptions:
+        - CreateNamespace=true
