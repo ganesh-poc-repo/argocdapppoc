@@ -1,6 +1,7 @@
 project: argocdpoc
 source:
-  repoURL: 'https://github.com/ganesh-poc-repo/argocdapppoc.git'
+  repoURL: 'https://github.com/ganesh-poc-repo/argocdpoc.git'
+  path: nginx-devportal
   targetRevision: HEAD
   valueFiles:
     - $values/values.yaml
@@ -14,7 +15,7 @@ source:
         enabled: true
 destination:
   server: 'https://kubernetes.default.svc'
-  namespace: nginx-mesh
+  namespace: nginx-mesh-test
 syncPolicy:
   automated:
     prune: true
