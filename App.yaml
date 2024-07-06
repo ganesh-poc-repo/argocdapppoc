@@ -1,17 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: my-apps
+  name: guest-book
+  namespace: argocd
 spec:
   destination:
     namespace: default
-    server: 'https://kubernetes.default.svc'
-  source:
-    path: argocd/argocd-apps
-    repoURL: 'https://github.com/ganesh-poc-repo/argocdapppoc.git'
-    targetRevision: HEAD
+    server: https://kubernetes.default.svc
   project: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+  source:
+    path: nginx-devportal
+    repoURL: https://github.com/ganesh-poc-repo/argocdpoc.git
+    targetRevision: HEAD
