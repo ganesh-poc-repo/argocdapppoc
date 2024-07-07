@@ -9,7 +9,7 @@ spec:
   destination:
     namespace: argocd
     server: https://kubernetes.default.svc
-  project: argocdpoc
+  project: default
   source:
     path: nginx-devportal/templates
     repoURL: https://github.com/ganesh-poc-repo/argocdpoc.git
